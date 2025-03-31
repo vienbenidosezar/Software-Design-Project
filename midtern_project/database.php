@@ -1,51 +1,63 @@
 <?php
-    $username = $_POST['username'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password =$_POST['password'];
+$host = "localhost";
+$dbUsername = "root";
+$dbPassword = "root";
+$dbname = "autostock";
 
+// Establish database connection
+$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
-    if (!empty($username) || !empty($first_name) || !empty($last_name) || !empty($email) || !empty($password)) {
-        $host = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "root";
-        $dbname = "autostock";
+if ($conn->connect_error) {
+    die("Database Connection Failed: " . $conn->connect_error);
+}
 
-        $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+// Retrieve user input safely
+$username = trim($_POST['username']);
+$password = trim($_POST['password']);
 
-        if ($conn->connect_error) {
-            die("Database Connection Failed: " . $conn->connect_error);
-        } else {
-            $SELECT = "SELECT email From users Where email = ? Limit 1";
-            $INSERT = "INSERT Into users (username, first_name, last_name, email, password) value(?, ?, ?, ?, ?)";
-            echo "Database Connected Successfully!";
-        }
+if (empty($username) || empty($password)) {
+    die("Error: Username and Password are required!");
+}
 
-            $stmt = $conn->prepare($SELECT);
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $stmt->bind_result($email);
-            $stmt->store_result();
-            $rnum = $stmt->num_rows();
+// Check if user is an admin
+$query = "SELECT * FROM admin WHERE admin_username = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
-            if ($rnum==0) {
-                $stmt->close();
-
-                $stmt = $conn->prepare($INSERT);
-                $stmt->bind_param("sssss", $username, $first_name, $last_name, $email, $password);
-                $stmt->execute();
-
-                echo "Successfully Inserted";
-            } else {
-                echo "someone already register";
-            }
-        echo "Database Connected Successfully!";
+if ($result->num_rows == 1) {
+    $admin = $result->fetch_assoc();
+    
+    if ($password === $admin['admin_password']) {
+        echo "You are admin";
     } else {
-        echo "All field are required";
-
-        die();
+        echo "Invalid password!";
     }
-    echo "Database Connected Successfully!";
+} else {
+    // Admin login failed, check if user is registering
+    $checkUser = "SELECT * FROM users WHERE username = ?";
+    $stmt = $conn->prepare($checkUser);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $userResult = $stmt->get_result();
 
+    if ($userResult->num_rows > 0) {
+        echo "Username already taken!";
+    } else {
+        // Hash the password before storing it
+        $INSERT = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $stmt = $conn->prepare($INSERT);
+        $stmt->bind_param("ss", $username, $password);
+
+        if ($stmt->execute()) {
+            echo "Successfully Registered!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
+}
+
+$stmt->close();
+$conn->close();
 ?>

@@ -1,15 +1,16 @@
 <?php
-    $db_server = "localhost";
-    $db_server = "root";
-    $db_pass = "root";
-    $db_name = "testing";
+    $username = $_POST['username'];   
 
-    $conn = mysqli_connect($db_server, $db_server, $db_pass, $db_name);
+    $conn = mysqli_connect('localhost', 'root', 'root', 'testing');
 
-    if($conn) {
-        echo"connected";
-
+    if ($conn->connect_error) {
+        die('Connection failed: ');
     }else {
-        echo"not connect";
+        $stmt = $conn->prepare("INSERT INTO registration(name) VALUES(?)");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt ->close();
+        $conn ->close();
+
     }
 ?>

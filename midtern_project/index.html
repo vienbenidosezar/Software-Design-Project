@@ -5,6 +5,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="frontend/style/front.css">
     <title>AutoStock</title>
+
+    <script type="module" src="backend/firebase.js"></script>
 </head>
 <body>
  <div class="wrapper">
@@ -45,11 +47,11 @@
               <i class="bx bx-user"></i>
             </div>
             <div class="input_box">
-              <input type="password" class="input_field" placeholder="Password">
+              <input type="password" class="input_field" name="password" placeholder="Password">
               <i class="bx bx-lock-alt"></i>
             </div>
             <div class="input_box">
-              <input type="submit" class="submit" value="Sign In">
+              <input type="submit" id="submit_input" class="submit" value="Sign In">
             </div>
             <div class="dontAcc_div">
                 <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
