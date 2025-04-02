@@ -279,7 +279,5 @@ button:hover{
 }
 
 #signUpButton, #signInButton {
-    color: rgb(92, 92, 240);
-    text-decoration: underline;
     width: 70px;
 } 
