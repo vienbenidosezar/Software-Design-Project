@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>AMS HOMEPAGE</title>
     <link rel="stylesheet" href="style/homepage_css.css">
-    <script type="module" src="homepage_firebase.js"></script>
+    <script type="module" src="backend/homepage_firebase.js"></script>
 </head>
 <body>
-    <h1>Welcome to the Homepage</h1>
-    <div>First Name: <span id="loggedUserFName"></span></div>
-    <div>Last Name: <span id="loggedUserLName"></span></div>
-    <div>Email: <span id="loggedUserEmail"></span></div>
-    <button id="logout">Logout</button>
+    <main>
+        <img src="style/libs/thumbnail.jpg" alt="">
+        <h1>Welcome to the AutoStock</h1>
+        <div>Hello Sir/Ma'am <span          id="loggedUserLName"></span>, <span id="loggedUserFName"> </span>
+        </div>
+
+        <div>Email:
+            <span id="loggedUserEmail"></span>
+        
+        </div>
+
+        <button id="logout">Logout</button>
+    </main>
 </body>
 </html>

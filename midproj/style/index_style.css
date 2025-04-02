@@ -45,7 +45,7 @@ video {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 110vh;
+      min-height: 1188px;
 }
 
 nav{
@@ -92,9 +92,7 @@ nav .nav_menu ul li .link{
     transition: .3s ease;
     color: black;
 }
-.btn:hover{
-    background: rgba(255, 255, 255, 0.3);
-}
+
 #registerBtn{
     margin-left: 15px;
 }
@@ -102,15 +100,14 @@ nav .nav_menu ul li .link{
     background: rgba(255, 255, 255, 0.7);
 }
 .btn.login_btn:hover{
-    background: rgba(255, 255, 255, 0.5);
+    background: rgb(92, 92, 240);
 }
-
 .btn.signup_btn {
     background: rgba(255, 255, 255, 0.7);
 }
 
 .btn.signup_btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.966);
 }
 
 .nav_menu_btn{
@@ -120,7 +117,7 @@ nav .nav_menu ul li .link{
 main{
     background-color: rgba(255, 255, 255, 0.8);
     width:450px;
-    padding:1.5rem;
+    padding:24px;
     margin:50px auto;
     border-radius:15px;
 }
@@ -131,8 +128,8 @@ form{
     font-size:1.5rem;
     font-weight:bold;
     text-align:center;
-    padding:1.3rem;
-    margin-bottom:0.4rem;
+    padding:20px;
+    margin-bottom:6px;
 }
 input{
     color:inherit;
@@ -140,7 +137,7 @@ input{
     background-color:transparent;
     border:none;
     border-bottom:1px solid #757575;
-    padding-left:1.5rem;
+    padding-left:24px;
     font-size:15px;
 }
 .input-group{
@@ -163,7 +160,7 @@ input::placeholder{
 label{
     color:#757575;
     position:relative;
-    left:1.2em;
+    left:19px;
     top:-30px;
     cursor:auto;
     transition:0.3s ease all;
@@ -177,8 +174,8 @@ input:focus~label,input:not(:placeholder-shown)~label{
 }
 .recover{
     text-align:right;
-    font-size:1rem;
-    margin-bottom:1rem;
+    font-size:16px;
+    margin-bottom:1px;
 
 }
 .recover a{
@@ -186,8 +183,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     color:rgb(125,125,235);
 }
 .recover a:hover{
-    color:blue;
-    text-decoration:underline;
+    color: rgb(39, 39, 240);
 }
 button{
     font-size:1.1rem;
@@ -205,54 +201,77 @@ button:hover{
     background:#07001f;
 }
 .or{
-    font-size:1.1rem;
-    margin-top:0.5rem;
+    font-size:17px;
+    margin-top:8px;
     text-align:center;
 }
-.icons{
-    text-align:center;
-}
-.icons i{
-    color:rgb(125,125,235);
-    padding:0.8rem 1.5rem;
-    border-radius:10px;
-    font-size:1.5rem;
-    cursor:pointer;
-    border:2px solid #dfe9f5;
-    margin:0 15px;
-    transition:1s;
-}
-.icons i:hover{
-    background:#07001f;
-    font-size:1.6rem;
-    border:2px solid rgb(125,125,235);
-}
+
 .links{
     display:flex;
-    justify-content:space-around;
-    padding:0 4rem;
-    margin-top:0.9rem;
+    justify-content:space-evenly;
+    padding:0 50px;
+    margin-top:2px;
     font-weight:bold;
+    font-size: 13px;
 }
  #signUpButton, #signInButton{
     color:rgb(125,125,235);
     border:none;
     background-color:transparent;
-    font-size:1rem;
+    font-size:16px;
     font-weight:bold;
 }
 #signUpButton:hover, #signInButton:hover {
-    text-decoration:underline;
-    color:blue;
+    color: rgb(92, 92, 240);
+    text-decoration: underline;
 } 
 .messageDiv{
-    background-color:hsl(327,90%,28%);
+    background-color:rgb(125,125,235);
     color:white;
     padding:10px 20px;
     margin:10px;
     border-radius: 5px;
-    font-size:1rem;
+    font-size:16px;
     opacity:0;
-    animation:fadeOut 7s forwards;
+    animation:fadeOut 4s forwards;
+
+}
+
+.nav_button button{
+    font-size: 15px;
+}
+.nav_button .login_btn{
+    background-color: rgb(125,125,235);
+    color: white;
+}
+
+.submit_btn_signIn:hover{
+    background: rgb(86, 86, 245);
+}
+
+.submit_btn_signIN:hover{
+    background: rgb(86, 86, 245);
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.img_icons img{
+    width: 20px;
+}
+
+.img_icons {
+    position: absolute;
+    top: 0;
+    left: -5px;
+}
+.nav_logo {
+    display: flex;
+}
+.ams_logo{
+    position: relative;
+    left: 35px;
+    width: 100px;
 
 }
