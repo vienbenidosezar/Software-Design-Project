@@ -5,10 +5,6 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sen
 
 import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js"
     
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 const firebaseConfig = {
   apiKey: "AIzaSyC4dqWkUpTNEHmX27ZPGw1mvp3SJoIDuSI",
   authDomain: "softwaredesign-b9565.firebaseapp.com",
@@ -18,7 +14,6 @@ const firebaseConfig = {
   appId: "1:355043928033:web:71185d82597b20187a14a0"
 };
 
- // Initialize Firebase
  const app = initializeApp(firebaseConfig);
 
  function showMessage(message, divId){
@@ -49,7 +44,7 @@ const firebaseConfig = {
 
         sendEmailVerification(auth.currentUser)
                 .then(() => {
-                    alert("Email Verification link sent")
+                    showMessage('Email Verification link sent', 'signUpMessage')
                 });
 
         const userData={
@@ -65,7 +60,7 @@ const firebaseConfig = {
             window.location.href='index.html';
         })
         .catch((error)=>{
-            console.error("error writing document", error);
+            console.error("Error writing document", error);
 
         });
     })
