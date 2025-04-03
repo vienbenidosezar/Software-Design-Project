@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMS Login</title>
     <link rel="icon" type="png" href="style/icons/top_logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style/index_style.css">
+
+    <!--script for the firebase-->
     <script type="module" src="backend/index_firebase.js"></script>
 
 </head>
 <body>
+  <!--Background Video-->
   <div class="wrapper">
     <div class="video-container">
       <video autoplay loop muted playsinline>
           <source src="style/libs/bg.mp4" type="video/mp4">
       </video>
     </div>
-  
+  <!--Navigator, the thing that you see in the top-->
   <nav>
     <div class="nav_logo">
         <img class="ams_logo" src="style/icons/ams_logo.png" alt="">
@@ -40,6 +42,7 @@
 </nav>
 
   <main style="display: none;" id="signup">
+    <!--When you signUp, this is the start-->
       <h1 class="form-title">Register</h1>
       <form method="post" action="">
         <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
@@ -81,8 +84,10 @@
   </main>
 
   <main id="signIn">
+    <!--When you signIn, this is the start-->
     <h1 class="form-title">Sign In</h1>
     <form method="post" action="">
+      <!--This div is a pop-up message when there is a notification. It will activate with the use of javaScript-->
       <div id="signInMessage" class="messageDiv" style="display:none;"></div>
 
       <div class="input-group">
@@ -110,6 +115,7 @@
     </div>
   </main>
 
+  <!--script for the showing the signIn and SignUp when clicking, also the top of signIn and signUp-->
   <script src="backend/index_script.js"></script>
 </body>
 </html>

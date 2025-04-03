@@ -19,6 +19,7 @@ const firebaseConfig = {
   const auth=getAuth();
   const db=getFirestore();
 
+  //this code will get the email and name of the user only
   onAuthStateChanged(auth, (user)=>{
     const loggedInUserId=localStorage.getItem('loggedInUserId');
     if(loggedInUserId){
@@ -48,6 +49,7 @@ const firebaseConfig = {
 
   const logoutButton=document.getElementById('logout');
 
+  //logout event, when it is logout it will automatically back to index.html
   logoutButton.addEventListener('click',()=>{
     localStorage.removeItem('loggedInUserId');
     signOut(auth)

@@ -25,9 +25,10 @@ const firebaseConfig = {
         messageDiv.style.opacity=0;
     },5000);
  }
-
+//this button will (submit signUp) get the email, password, firstname and lastName
  const signUp=document.getElementById('submitSignUp');
  
+ //This is the function of the button
  signUp.addEventListener('click', (event)=>{
     event.preventDefault();
     const email=document.getElementById('rEmail').value;
@@ -38,6 +39,7 @@ const firebaseConfig = {
     const auth = getAuth();
     const db = getFirestore();
 
+    //sending Authentication via email what you in email
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential)=>{
         const user=userCredential.user;
@@ -52,7 +54,7 @@ const firebaseConfig = {
             firstName: firstName,
             lastName:lastName
         };
-        
+        //Pop-up message for account created, then some tryCatch if not properly created
         showMessage('Account Created Successfully', 'signUpMessage');
         const docRef=doc(db, "users", user.uid);
         setDoc(docRef,userData)
@@ -75,19 +77,21 @@ const firebaseConfig = {
     })
  });
 
+ //again, the start of the signIn
  const signIn = document.getElementById('submitSignIn');
-
+//the function of the signIn button
  signIn.addEventListener('click', (event) => {
      event.preventDefault();
      const email = document.getElementById('email').value;
      const password = document.getElementById('password').value;
      const auth = getAuth();
- 
+    
+     //code for authentication verification email
      signInWithEmailAndPassword(auth, email, password)
      .then((userCredential) => {
          const user = userCredential.user;
  
-         // Check if the user's email is verified
+         // Check if the user email is verified
          if (user.emailVerified) {
              showMessage('Login is successful', 'signInMessage');
              localStorage.setItem('loggedInUserId', user.uid);

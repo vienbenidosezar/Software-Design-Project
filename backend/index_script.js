@@ -1,3 +1,6 @@
+//this whole code function is to display the sign in and sign up design in html
+
+
 const signUpButton=document.getElementById('signUpButton');
 const signInButton=document.getElementById('signInButton');
 const signInForm=document.getElementById('signIn');
